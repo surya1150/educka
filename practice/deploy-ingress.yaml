@@ -1,0 +1,99 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: app1
+  template:
+    metadata:
+      name: app1
+      labels:
+        app: app1
+    spec:
+      containers:
+        - name: app1
+          image: lerndevops/nginx:app1
+          ports: 
+            - containerPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app1-svc
+spec:
+  ports:
+  - port: 80
+  selector:
+    app: app1
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: busybox1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      tier: jumppod
+  template:
+    metadata:
+      name: busybox1
+      labels:
+        tier: jumppod
+    spec:
+      containers:
+        - name: busybox1
+          image: lerndevops/nginx:busybox1
+          ports:
+            - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: busybox1-svc
+spec:
+  ports:
+  - port: 80
+  selector:
+    tier: jumppod
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: busybox3
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      tier: jumppod
+  template:
+    metadata:
+      name: busybox3
+      labels:
+        tier: jumppod
+    spec:
+      containers:
+        - name: busybox3
+          image: lerndevops/nginx:busybox3
+          ports:
+            - containerPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: busybox3-svc
+spec:
+  ports:
+  - port: 80
+  selector:
+    tier: jumppod

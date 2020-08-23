@@ -1,0 +1,15 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: environment-example
+spec:
+  containers:
+    - name: cm-pod-cont
+      image: nginx
+      env:
+        - name: Variable1
+          value: somevalue
+        - name: Variable2
+          value: someothervalue
+      ports:
+        - containerPort: 80

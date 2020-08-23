@@ -1,0 +1,30 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: configmap-environment
+spec:
+  containers:
+    - name: cm-pod-cont
+      image: nginx
+      env:
+        - name: db_h
+          valueFrom:
+            configMapKeyRef:
+              name: db-connection
+              key: db_h
+        - name: db_p
+          valueFrom:
+            configMapKeyRef:
+              name: db-connection
+              key: db_p
+      ports:
+        - containerPort: 80
+      ## to use ConfigMap as files in a volume
+      volumeMounts:
+         - name: html-from-cm
+           mountPath: /usr/share/nginx/html/
+           readOnly: true
+  volumes:
+   - name: html-from-cm
+     configMap:
+       name: db-connection

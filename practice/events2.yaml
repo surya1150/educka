@@ -1,0 +1,48 @@
+Name:         nginx-web
+Namespace:    default
+Priority:     0
+Node:         kubernetes-node2/10.128.0.19
+Start Time:   Sun, 23 Aug 2020 03:20:23 +0000
+Labels:       run=nginx-web
+Annotations:  <none>
+Status:       Running
+IP:           10.36.0.1
+IPs:
+  IP:  10.36.0.1
+Containers:
+  nginx-web:
+    Container ID:   docker://437bf73ede72f4fbfdb5562baa1b87641fe32b65bb9cb15292e0c0073dc05cd8
+    Image:          nginx
+    Image ID:       docker-pullable://nginx@sha256:b0ad43f7ee5edbc0effbc14645ae7055e21bc1973aee5150745632a24a752661
+    Port:           <none>
+    Host Port:      <none>
+    State:          Running
+      Started:      Sun, 23 Aug 2020 03:20:26 +0000
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-wrcxp (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+Volumes:
+  default-token-wrcxp:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-wrcxp
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason     Age   From                       Message
+  ----    ------     ----  ----                       -------
+  Normal  Scheduled  2m3s  default-scheduler          Successfully assigned default/nginx-web to kubernetes-node2
+  Normal  Pulling    2m2s  kubelet, kubernetes-node2  Pulling image "nginx"
+  Normal  Pulled     2m1s  kubelet, kubernetes-node2  Successfully pulled image "nginx"
+  Normal  Created    2m1s  kubelet, kubernetes-node2  Created container nginx-web
+  Normal  Started    2m    kubelet, kubernetes-node2  Started container nginx-web

@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-html
+data:
+  /tmp/db_h.txt
+  /tmp/db_p.txt
+
+

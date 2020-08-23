@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-demo-sa
+  namespace: rbac-test
+spec:
+  serviceAccoiuntName: rbac-test-sa
+  containers:
+  - name: sa-demo
+    image: nginx

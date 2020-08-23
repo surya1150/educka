@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: mying-rule
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+        - path: /app1
+          backend:
+            serviceName: busybox1-svc
+            servicePort: 80
+        - path: /busybox1
+          backend:
+            serviceName: busybox1-svc
+            servicePort: 80
+        - path: /busybox2
+          backend:
+            serviceName: busybox2-svc
+            servicePort: 80
